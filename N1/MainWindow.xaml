@@ -1,0 +1,47 @@
+﻿<Window x:Class="N1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:N1"
+        mc:Ignorable="d"
+        Title="Лаба 7" ResizeMode="NoResize" Height="310" Width="610">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Height" Value="24"></Setter>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Lavender"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Setter Property="Width" Value="128"></Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontSize" Value="16"></Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Label Content="Начало:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_start" HorizontalAlignment="Left" Margin="76,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Конец:" HorizontalAlignment="Left" Margin="208,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_end" HorizontalAlignment="Left" Margin="265,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Длина:" HorizontalAlignment="Left" Margin="397,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_len" HorizontalAlignment="Left" Margin="454,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
+
+        <Button x:Name="btn_gen" Content="Генерация" HorizontalAlignment="Right" Margin="0,13,10,0" VerticalAlignment="Top" Width="93" Click="btn_gen_Click"/>
+
+        <Label Content="Алфавит символов:" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lb_symb" Margin="10,82,10,73"/>
+
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="10,0,0,40" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="tb_password" HorizontalAlignment="Left" Margin="86,0,0,45" VerticalAlignment="Bottom" Width="497"/>
+
+    </Grid>
+</Window>
