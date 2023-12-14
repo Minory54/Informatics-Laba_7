@@ -56,16 +56,20 @@ namespace N2
             
         }
 
-        string encrypt(TextBox textBox, int key) // шифровка
+        string encrypt(int key) // шифровка
         {
             string text = tb_result.Text;
             string result = "";
 
             for (int i = 0; i < text.Length; i++)
             {
-                byte symbol;
-                int a = Convert.ToInt32(text[i]);
-                symbol = (byte)(a + key);
+                char symbol = ' ';              
+
+                if (text[i] + key > char.MaxValue)
+                {
+                    symbol = (char)((text[i] + key) - char.MaxValue);
+                } else
+                    symbol = (char)(text[i] + key);
 
                 result += char.ConvertFromUtf32(Convert.ToInt32(symbol)).ToString();
             }
@@ -73,16 +77,22 @@ namespace N2
             return result;
         }
 
-        string decipher(TextBox textBox, int key) // дешифровка
+        string decipher(int key) // дешифровка
         {
             string text = tb_result.Text;
             string result = "";
 
             for (int i = 0; i < text.Length; i++)
             {
-                byte symbol;
-                int a = Convert.ToInt32(text[i]);
-                symbol = (byte)(a - key);
+                char symbol = ' ';
+
+
+                if (text[i] - key < 0)
+                {
+                    symbol = (char)((text[i] - key) + char.MaxValue);
+                }
+                else
+                    symbol = (char)(text[i] - key);
 
                 result += char.ConvertFromUtf32(Convert.ToInt32(symbol)).ToString();
             }
@@ -93,13 +103,13 @@ namespace N2
         private void btn_encrypt_Click(object sender, RoutedEventArgs e)
         {
             int key = readInt(tb_key);
-            tb_result.Text = encrypt(tb_result, key);
+            tb_result.Text = encrypt(key);
         }
 
         private void btn_decipher_Click(object sender, RoutedEventArgs e)
         {
             int key = readInt(tb_key);
-            tb_result.Text = decipher(tb_result, key);
+            tb_result.Text = decipher(key);
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)

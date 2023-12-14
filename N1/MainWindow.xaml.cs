@@ -62,6 +62,21 @@ namespace N1
             int end = int.Parse(tb_end.Text, System.Globalization.NumberStyles.HexNumber);
             int len = readInt(tb_len);
 
+            string line = "";
+
+            lb_symb.Items.Clear();
+            for(int i = start, j = 1; i <= end; i++, j++)
+            {
+                string letter = char.ConvertFromUtf32(Convert.ToInt32(i)).ToString();
+
+                line = line + $"{letter} = {i.ToString("X4")}" + "     ";
+                if(j % 8 == 0)
+                {
+                    lb_symb.Items.Add(line);
+                    line = "";
+                }               
+            }          
+            lb_symb.Items.Add(line);
             tb_password.Text = genPassword(start, end, len);            
         }
     }
