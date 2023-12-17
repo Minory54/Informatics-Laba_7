@@ -86,7 +86,6 @@ namespace N2
             {
                 char symbol = ' ';
 
-
                 if (text[i] - key < 0)
                 {
                     symbol = (char)((text[i] - key) + char.MaxValue);
